@@ -10,7 +10,7 @@
       position: absolute;
       inset: 0;
       overflow: hidden;
-      font-family: "Inter", sans-serif;
+      font-family: "Montserrat", sans-serif;
       background: transparent;
     }
     #tc-flood { position: absolute; inset: 0; background: var(--brand); }
@@ -18,7 +18,7 @@
       position: absolute;
       left: 160px;
       font-size: 110px;
-      font-weight: 900;
+      font-weight: 800;
       letter-spacing: -0.035em;
       color: #fff;
       white-space: nowrap;
@@ -26,29 +26,28 @@
     #tc-l1 { top: 330px; }
     #tc-l2 { top: 470px; }
     .tc-line span { display: inline-block; }
-    #tc-mark { position: absolute; left: 0; right: 0; top: 330px; text-align: center; color: #fff; }
-    #tc-word { font-size: 200px; font-weight: 900; letter-spacing: -0.05em; line-height: 1; }
-    #tc-word span { display: inline-block; }
-    #tc-word .n { color: var(--ink); }
-    #tc-tag { font-size: 38px; font-weight: 700; margin-top: 26px; }
+    #tc-white { position: absolute; inset: 0; background: #fff; }
+    #tc-mark { position: absolute; left: 0; right: 0; top: 300px; text-align: center; color: var(--ink); }
+    #tc-logo { display: block; width: 760px; height: auto; margin: 0 auto; }
+    #tc-tag { font-size: 40px; font-weight: 700; margin-top: 44px; }
     #tc-cta {
       display: inline-block;
-      margin-top: 54px;
-      background: #fff;
-      color: var(--brand);
+      margin-top: 56px;
+      background: var(--brand);
+      color: #fff;
       font-size: 40px;
-      font-weight: 900;
-      padding: 24px 52px;
-      border-radius: 14px;
-      box-shadow: 0 16px 40px rgba(18, 32, 47, 0.25);
+      font-weight: 600;
+      padding: 24px 56px;
+      border-radius: 10px;
     }
   </style>
   <div id="root" data-composition-id="tancament" data-width="1920" data-height="1080" data-layout-allow-overflow>
     <div id="tc-flood"></div>
     <div id="tc-l1" class="tc-line"><span>Cada</span> <span>alumne,</span> <span>localitzat.</span></div>
     <div id="tc-l2" class="tc-line"><span>Tot</span> <span>el</span> <span>centre,</span> <span>en</span> <span>una</span> <span>web.</span></div>
+    <div id="tc-white"></div>
     <div id="tc-mark">
-      <div id="tc-word"><span>L</span><span>A</span><span>N</span><span>A</span><span>U</span><span class="n">1</span><span class="n">1</span><span class="n">2</span></div>
+      <img id="tc-logo" src="assets/brand/lanau112-logo.png" alt="LANAU112" />
       <div id="tc-tag" data-var-text="tagline">Gestió acadèmica i administrativa dels cicles formatius</div>
       <div id="tc-cta" data-var-text="cta">Demana una demo</div>
     </div>
@@ -70,12 +69,12 @@
       line("#tc-l2", 1.45);
       tl.to(["#tc-l1", "#tc-l2"], { opacity: 0, filter: "blur(8px)", duration: 0.2, stagger: 0.06, ease: "power3.in" }, 3.0);
 
-      // The mark is typed in letter by letter, then the tagline and the call to action
-      tl.fromTo("#tc-mark", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 3.2);
-      tl.fromTo("#tc-word span", { opacity: 0.0, y: 40, filter: "blur(6px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, stagger: 0.05, ease: "expo.out" }, 3.2);
-      tl.fromTo("#tc-tag", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 3.75);
-      tl.fromTo("#tc-cta", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 4.0);
+      // The white of the website wipes up and the real logo lands, then the tagline and the call to action
+      tl.fromTo("#tc-white", { clipPath: "inset(100% 0% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.55, ease: "power3.inOut" }, 3.05);
+      tl.fromTo("#tc-mark", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 3.4);
+      tl.fromTo("#tc-logo", { opacity: 0, scale: 0.92, filter: "blur(10px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 3.4);
+      tl.fromTo("#tc-tag", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 3.9);
+      tl.fromTo("#tc-cta", { opacity: 0, scale: 0.85 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 4.15);
 
       window.__timelines["tancament"] = tl;
     })();

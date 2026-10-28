@@ -7,6 +7,7 @@
   reminder button covering the 2nd fee chip, 4 s still stretch in the dashboard (now a live payment update).
 - Audio (measured, not heard): −17.3 LUFS integrated, true peak −4.9 dBTP, no clipping;
   every click/pop onset lands 1–2 frames after its picture. Effects only, no music bed.
-- Provisional: brand red #D7141A and the typed "LANAU112" wordmark stand in for the official
-  colours and logo (lanau112.cat was not reachable from this environment). Names and figures are
-  illustrative and labelled "Dades d'exemple" on screen.
+- Render 2: corporate palette taken from the client's homepage screenshot (blue #4E70B0, navy #101A33,
+  logo grey #3F3F3E), Montserrat as on the website, and the real logo cut from that screenshot
+  (assets/brand/lanau112-logo.png, 543 px wide: replace with the official SVG for a sharper end card).
+  Names and figures are illustrative and labelled "Dades d'exemple" on screen.

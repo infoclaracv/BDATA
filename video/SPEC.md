@@ -13,11 +13,11 @@ FETS (de lanau112.cat via cerca): LANAU112, Sabadell (Pg. Can Feu 17-23). Centre
          2.000 h, 2 cursos), CFGS Coordinació d'Emergències i Protecció Civil.
          Noms d'alumnes, professors, empreses i xifres: IL·LUSTRATIUS, marcats «Dades d'exemple».
 
-LOOK:    ground #F3F5F7 (oficina clara), ink #12202F, line #D9DEE4;
-         brand #D7141A (provisional fins tenir els colors oficials: variable `brand`),
+LOOK:    ground #F4F6FA, ink #101A33, line #D8DDE6;
+         brand #4E70B0 (blau corporatiu de lanau112.cat), logo #3F3F3E + #4E70B0,
          ok #17985A, warn #E89B0C — només per a estats (pendent / resolt).
          L'accent brand surt: la paraula clau de cada títol, el botó d'acció, el tauler i el final.
-         Display: Inter 900, 96 px (8.9% alçada), tracking -3%. Títols secundaris Inter 700 56 px.
+         Display: Montserrat 800, 96 px (8.9% alçada), tracking -3%. Títols secundaris Inter 700 56 px.
          UI: Inter 400/700, mínim 26 px després de l'apropament.
          Medi: la pròpia UI de la plataforma i les cel·les d'un full de càlcul; ombres 0 12px 32px
          rgba(18,32,47,.12); radi 14 px; sense gra, sense vinyeta.

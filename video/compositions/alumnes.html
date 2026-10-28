@@ -5,7 +5,7 @@
       inset: 0;
       overflow: hidden;
       background: #fff;
-      font-family: "Inter", sans-serif;
+      font-family: "Montserrat", sans-serif;
     }
     #al-cam { position: absolute; inset: 0; }
     #al-tabs {
@@ -114,12 +114,12 @@
       background: var(--brand);
       color: #fff;
       font-size: 38px;
-      font-weight: 900;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    #al-fname { font-size: 48px; font-weight: 900; letter-spacing: -0.02em; }
+    #al-fname { font-size: 48px; font-weight: 800; letter-spacing: -0.02em; }
     #al-fsub { font-size: 24px; color: var(--muted); margin-top: 6px; }
     .al-box {
       position: absolute;
@@ -128,7 +128,7 @@
       border-radius: 14px;
       padding: 26px 30px;
     }
-    .al-box h4 { font-size: 26px; font-weight: 900; margin-bottom: 16px; }
+    .al-box h4 { font-size: 26px; font-weight: 800; margin-bottom: 16px; }
     #al-mods { left: 40px; top: 170px; width: 600px; height: 520px; }
     .al-mod {
       display: flex;
@@ -164,7 +164,7 @@
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 12px;
-      box-shadow: 0 18px 40px rgba(18, 32, 47, 0.2);
+      box-shadow: 0 18px 40px rgba(16, 26, 51, 0.2);
       padding: 8px;
       z-index: 5;
     }
@@ -178,7 +178,7 @@
       background: #fff;
       border-left: 10px solid var(--ok);
       border-radius: 10px;
-      box-shadow: 0 18px 40px rgba(18, 32, 47, 0.2);
+      box-shadow: 0 18px 40px rgba(16, 26, 51, 0.2);
       padding: 20px 28px;
       font-size: 26px;
       font-weight: 700;
@@ -192,7 +192,7 @@
     <div id="al-cam">
       <div class="app">
         <div class="side">
-          <div class="brandmark">LANAU<b>112</b></div>
+          <img class="logo-img" src="assets/brand/lanau112-logo.png" alt="LANAU112" />
           <div class="brandsub">Gestió de cicles</div>
           <div class="nav">
             <div>Tauler</div>
@@ -291,7 +291,7 @@
     (function () {
       const tl = gsap.timeline({ paused: true });
       // Brand colours come from the root variables, so changing `brand` recolours every tween too
-      const BRAND = getComputedStyle(document.documentElement).getPropertyValue("--brand").trim() || "#d7141a";
+      const BRAND = getComputedStyle(document.documentElement).getPropertyValue("--brand").trim() || "#4e70b0";
       const BRAND_SOFT = (() => { const h = BRAND.replace("#", ""); const n = parseInt(h.length === 3 ? h.replace(/./g, "$&$&") : h, 16);
         const m = (c) => Math.round(c * 0.1 + 255 * 0.9); return `rgb(${m(n >> 16 & 255)}, ${m(n >> 8 & 255)}, ${m(n & 255)})`; })();
       const cam = document.querySelector("#al-cam");
@@ -341,7 +341,7 @@
       moveCursor("#al-tab3", 1.0, 0.9);
       click(2.0);
       tl.to("#al-u1", { opacity: 0, duration: 0.15 }, 2.03);
-      tl.to("#al-tab1", { color: "#5d6976", duration: 0.15 }, 2.03);
+      tl.to("#al-tab1", { color: "#52596b", duration: 0.15 }, 2.03);
       tl.fromTo("#al-u3", { opacity: 0, scaleX: 0.3 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 2.03);
       tl.to("#al-tab3", { color: BRAND, duration: 0.15 }, 2.03);
       tl.fromTo(".al-row", { opacity: 0.15, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.04, ease: "power3.out", immediateRender: false }, 2.08);
@@ -350,7 +350,7 @@
       // 4.0 — filter: who has no placement?
       moveCursor("#al-f-prac", 3.05, 0.9);
       click(4.0);
-      tl.to("#al-f-prac", { backgroundColor: "#12202f", color: "#ffffff", borderColor: "#12202f", duration: 0.12 }, 4.03);
+      tl.to("#al-f-prac", { backgroundColor: "#101a33", color: "#ffffff", borderColor: "#101a33", duration: 0.12 }, 4.03);
       const keep = { "#al-r1": 0, "#al-r3": 1, "#al-r6": 2 };
       const rowH = 62;
       ["#al-r0", "#al-r2", "#al-r4", "#al-r5", "#al-r7"].forEach((s) =>
