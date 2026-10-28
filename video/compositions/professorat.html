@@ -1,0 +1,140 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+    }
+    #pr-cam { position: absolute; inset: 0; }
+    #pr-list { position: absolute; left: 64px; top: 160px; width: 520px; height: 680px; padding: 28px 30px; }
+    #pr-list h4, #pr-grid h4 { font-size: 26px; font-weight: 900; margin-bottom: 10px; }
+    .pr-t { padding: 16px 16px; border-radius: 10px; margin-top: 8px; }
+    .pr-t .n { font-size: 26px; font-weight: 700; }
+    .pr-t .m { font-size: 21px; color: var(--muted); margin-top: 4px; }
+    .pr-bar { position: relative; height: 12px; background: #edf0f3; border-radius: 6px; margin-top: 12px; width: 340px; display: inline-block; vertical-align: middle; }
+    .pr-bar i { position: absolute; left: 0; top: 0; bottom: 0; width: 340px; border-radius: 6px; background: var(--ink); transform-origin: 0 50%; }
+    .pr-h { display: inline-block; font-size: 21px; font-weight: 700; margin-left: 14px; vertical-align: middle; margin-top: 12px; }
+    #pr-grid { position: absolute; left: 616px; top: 160px; width: 920px; height: 680px; padding: 24px 20px; }
+    #pr-gin { position: absolute; left: 20px; top: 64px; width: 900px; height: 600px; }
+    .pr-day { position: absolute; top: 18px; width: 150px; text-align: center; font-size: 22px; font-weight: 700; color: var(--muted); }
+    .pr-hour { position: absolute; left: 0; width: 96px; font-size: 20px; color: var(--muted); }
+    .pr-b { position: absolute; width: 150px; height: 130px; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; justify-content: space-between; }
+    .pr-b b { font-size: 28px; font-weight: 900; }
+    .pr-b span { font-size: 20px; font-weight: 700; }
+    .c-EiPC { background: #fbe3e3; color: #b5121a; }
+    .c-ES { background: #e3f4ea; color: #127a47; }
+    .c-CAI { background: #fff1d6; color: #8a5a00; }
+    .c-CEPC { background: #e4ecf7; color: #1f4e8c; }
+    .caption span { display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="professorat" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="pr-cam">
+      <div class="app">
+        <div class="side">
+          <div class="brandmark">LANAU<b>112</b></div>
+          <div class="brandsub">Gestió de cicles</div>
+          <div class="nav">
+            <div>Tauler</div>
+            <div id="pr-nav-al" class="on">Alumnes</div>
+            <div>Cicles i mòduls</div>
+            <div>Pràctiques</div>
+            <div>Pagaments</div>
+            <div id="pr-nav-pr">Professorat</div>
+          </div>
+        </div>
+        <div class="main">
+          <div id="pr-content">
+            <div class="h1">Professorat</div>
+            <div class="demo">Dades d'exemple</div>
+            <div id="pr-list" class="card">
+              <h4>Docents i càrrega horària</h4>
+              <div class="pr-t" id="pr-t-jordi"><div class="n">Jordi Pons</div><div class="m">Emergències i Protecció Civil</div><span class="pr-bar"><i id="pr-bar1"></i></span><span class="pr-h">18 h</span></div>
+              <div class="pr-t" id="pr-t-marta"><div class="n">Marta Riba</div><div class="m">Emergències Sanitàries</div><span class="pr-bar"><i id="pr-bar2"></i></span><span class="pr-h">20 h</span></div>
+              <div class="pr-t" id="pr-t-sergi"><div class="n">Sergi Camps</div><div class="m">Cures Auxiliars d'Infermeria</div><span class="pr-bar"><i id="pr-bar3"></i></span><span class="pr-h">16 h</span></div>
+              <div class="pr-t" id="pr-t-nuria"><div class="n">Núria Vila</div><div class="m">Coordinació d'Emergències</div><span class="pr-bar"><i id="pr-bar4"></i></span><span class="pr-h">12 h</span></div>
+            </div>
+            <div id="pr-grid" class="card">
+              <h4>Horari setmanal</h4>
+              <div id="pr-gin">
+                <div class="pr-day" style="left: 110px">Dl</div>
+                <div class="pr-day" style="left: 268px">Dm</div>
+                <div class="pr-day" style="left: 426px">Dc</div>
+                <div class="pr-day" style="left: 584px">Dj</div>
+                <div class="pr-day" style="left: 742px">Dv</div>
+                <div class="pr-hour" style="top: 70px">8:00</div>
+                <div class="pr-hour" style="top: 212px">10:00</div>
+                <div class="pr-hour" style="top: 354px">12:00</div>
+                <div class="pr-hour" style="top: 496px">15:00</div>
+          <div id="pr-b0" class="pr-b c-EiPC t-jordi" style="left: 110px; top: 64px"><b>MP01</b><span>EiPC</span></div>
+          <div id="pr-b1" class="pr-b c-ES t-marta" style="left: 110px; top: 206px"><b>MP02</b><span>ES</span></div>
+          <div id="pr-b2" class="pr-b c-CAI t-sergi" style="left: 110px; top: 490px"><b>MP03</b><span>CAI</span></div>
+          <div id="pr-b3" class="pr-b c-ES t-marta" style="left: 268px; top: 64px"><b>MP04</b><span>ES</span></div>
+          <div id="pr-b4" class="pr-b c-EiPC t-jordi" style="left: 268px; top: 348px"><b>MP02</b><span>EiPC</span></div>
+          <div id="pr-b5" class="pr-b c-CEPC t-nuria" style="left: 268px; top: 490px"><b>MP01</b><span>CEPC</span></div>
+          <div id="pr-b6" class="pr-b c-EiPC t-jordi" style="left: 426px; top: 206px"><b>MP03</b><span>EiPC</span></div>
+          <div id="pr-b7" class="pr-b c-ES t-marta" style="left: 426px; top: 348px"><b>MP05</b><span>ES</span></div>
+          <div id="pr-b8" class="pr-b c-CAI t-sergi" style="left: 584px; top: 64px"><b>MP02</b><span>CAI</span></div>
+          <div id="pr-b9" class="pr-b c-EiPC t-jordi" style="left: 584px; top: 206px"><b>MP04</b><span>EiPC</span></div>
+          <div id="pr-b10" class="pr-b c-CEPC t-nuria" style="left: 584px; top: 490px"><b>MP02</b><span>CEPC</span></div>
+          <div id="pr-b11" class="pr-b c-ES t-marta" style="left: 742px; top: 64px"><b>MP01</b><span>ES</span></div>
+          <div id="pr-b12" class="pr-b c-CAI t-sergi" style="left: 742px; top: 348px"><b>MP03</b><span>CAI</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg id="pr-cursor" class="cursor" viewBox="0 0 24 24"><path d="M4 2 L4 20 L8.6 15.6 L11.8 22.4 L15 21 L11.8 14.4 L18 14.4 Z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round" /></svg>
+    </div>
+    <div id="pr-c1" class="caption"><span>Professorat</span> <span>i</span> <span>horaris,</span> <span><em>organitzats</em></span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const cam = document.querySelector("#pr-cam");
+      function rel(sel) {
+        let el = document.querySelector(sel);
+        const w = el.offsetWidth, h = el.offsetHeight;
+        let x = 0, y = 0;
+        while (el && el !== cam) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; }
+        return { cx: x + w / 2, cy: y + h / 2 };
+      }
+      function click(at) {
+        tl.to("#pr-cursor", { scale: 0.82, duration: 0.07, ease: "power2.in", transformOrigin: "10% 10%" }, at);
+        tl.to("#pr-cursor", { scale: 1, duration: 0.14, ease: "power2.out" }, at + 0.07);
+      }
+      gsap.set(cam, { transformOrigin: "0 0" });
+
+      // 0.43 — click Professorat in the sidebar
+      const nav = rel("#pr-nav-pr");
+      tl.fromTo("#pr-cursor", { x: 1460, y: 820 }, { x: nav.cx - 60, y: nav.cy - 8, duration: 0.42, ease: "power3.inOut" }, 0);
+      click(0.43);
+      tl.to("#pr-nav-al", { backgroundColor: "rgba(253,236,236,0)", color: "#5d6976", duration: 0.12 }, 0.46);
+      tl.to("#pr-nav-pr", { backgroundColor: "#fdecec", color: "#d7141a", duration: 0.12 }, 0.46);
+
+      // Content arrives on the same stage
+      tl.fromTo("#pr-content", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.5);
+      tl.fromTo(".pr-t", { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.35, stagger: 0.06, ease: "expo.out" }, 0.6);
+      [18, 20, 16, 12].forEach((h, i) =>
+        tl.fromTo("#pr-bar" + (i + 1), { scaleX: 0 }, { scaleX: h / 20, duration: 0.6, ease: "expo.out" }, 0.8 + i * 0.06));
+      tl.fromTo(".pr-b", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.35, stagger: 0.05, ease: "back.out(1.6)" }, 1.1);
+
+      tl.fromTo("#pr-c1", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 1.0);
+      tl.fromTo("#pr-c1", { x: -30 }, { x: 0, duration: 0.5, ease: "expo.out" }, 1.0);
+      tl.fromTo("#pr-c1 span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.07, ease: "power2.out" }, 1.05);
+
+      // 2.6 — pick a teacher: her modules stand out in the timetable
+      const marta = rel("#pr-t-marta");
+      tl.to("#pr-cursor", { x: marta.cx - 120, y: marta.cy - 30, duration: 0.8, ease: "power3.inOut" }, 1.75);
+      click(2.6);
+      tl.to("#pr-t-marta", { backgroundColor: "#fdecec", duration: 0.15 }, 2.63);
+      tl.to(".pr-b:not(.t-marta)", { opacity: 0.25, duration: 0.25, ease: "power2.out" }, 2.65);
+      tl.to(".pr-b.t-marta", { scale: 1.06, boxShadow: "0 10px 24px rgba(18,32,47,0.18)", duration: 0.3, ease: "back.out(1.6)", stagger: 0.04 }, 2.65);
+
+      // Hand-off to the dashboard on the same stage
+      tl.to(["#pr-content", "#pr-cursor", "#pr-c1"], { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power3.in" }, 5.9);
+
+      window.__timelines["professorat"] = tl;
+    })();
+  </script>
+</template>

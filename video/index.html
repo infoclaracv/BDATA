@@ -1,0 +1,234 @@
+<!doctype html>
+<html
+  lang="ca"
+  data-composition-variables='[
+    {"id":"brand","type":"color","label":"Color de marca (provisional)","default":"#D7141A"},
+    {"id":"ink","type":"color","label":"Color de text","default":"#12202F"},
+    {"id":"ground","type":"color","label":"Fons","default":"#F3F5F7"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      :root {
+        --brand: #d7141a;
+        --brand-soft: #fdecec;
+        --ink: #12202f;
+        --ground: #f3f5f7;
+        --line: #d9dee4;
+        --muted: #5d6976;
+        --ok: #17985a;
+        --warn: #e89b0c;
+        --font-display: "Inter", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--ground);
+        font-family: var(--font-display);
+        color: var(--ink);
+      }
+      #root {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      /* Shared app shell for the platform scenes (alumnes, professorat, tauler) */
+      .app {
+        position: absolute;
+        inset: 0;
+        background: var(--ground);
+        font-family: var(--font-display);
+        color: var(--ink);
+      }
+      .side {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 320px;
+        height: 1080px;
+        background: #fff;
+        border-right: 1px solid var(--line);
+        padding: 52px 32px;
+      }
+      .brandmark {
+        font-weight: 900;
+        font-size: 42px;
+        letter-spacing: -0.03em;
+      }
+      .brandmark b {
+        color: var(--brand);
+        font-weight: 900;
+      }
+      .brandsub {
+        font-size: 21px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+      .nav {
+        margin-top: 72px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .nav div {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--muted);
+        padding: 14px 18px;
+        border-radius: 12px;
+      }
+      .nav div.on {
+        background: var(--brand-soft);
+        color: var(--brand);
+      }
+      .main {
+        position: absolute;
+        left: 320px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        padding: 56px 64px;
+      }
+      .h1 {
+        font-size: 54px;
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+      .demo {
+        position: absolute;
+        right: 64px;
+        top: 70px;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--muted);
+        border: 2px dashed #b8c0c9;
+        border-radius: 10px;
+        padding: 8px 14px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 14px;
+        box-shadow: 0 12px 32px rgba(18, 32, 47, 0.1);
+        border: 1px solid var(--line);
+      }
+      .chip {
+        display: inline-block;
+        font-size: 21px;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 8px;
+        white-space: nowrap;
+      }
+      .chip.ok {
+        background: #e3f4ea;
+        color: #127a47;
+      }
+      .chip.bad {
+        background: #fbe3e3;
+        color: #b5121a;
+      }
+      .chip.warn {
+        background: #fff1d6;
+        color: #8a5a00;
+      }
+      .cursor {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 64px;
+        height: 64px;
+        z-index: 50;
+      }
+      .caption {
+        position: absolute;
+        left: 384px;
+        bottom: 56px;
+        background: #fff;
+        border-left: 12px solid var(--brand);
+        border-radius: 10px;
+        box-shadow: 0 16px 40px rgba(18, 32, 47, 0.18);
+        padding: 22px 36px;
+        font-size: 50px;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+        z-index: 40;
+      }
+      .caption em {
+        font-style: normal;
+        color: var(--brand);
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="50.2"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div id="intro" data-composition-id="intro" data-composition-src="compositions/intro.html"
+        data-start="0" data-duration="6.2" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="bbdd" data-composition-id="bbdd" data-composition-src="compositions/bbdd.html"
+        data-start="6.2" data-duration="7.2" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="alumnes" data-composition-id="alumnes" data-composition-src="compositions/alumnes.html"
+        data-start="13.4" data-duration="17.8" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="professorat" data-composition-id="professorat" data-composition-src="compositions/professorat.html"
+        data-start="31.2" data-duration="6.2" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="tauler" data-composition-id="tauler" data-composition-src="compositions/tauler.html"
+        data-start="37.4" data-duration="6.6" data-track-index="1" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+      <div id="tancament" style="z-index: 2" data-composition-id="tancament" data-composition-src="compositions/tancament.html"
+        data-start="43.4" data-duration="6.8" data-track-index="2" data-track-kind="graphics"
+        data-width="1920" data-height="1080"></div>
+
+      <!-- Sound effects: each one sits on a visible action -->
+      <audio id="sfx-typing" class="clip" src="assets/sfx/typing.mp3" data-start="0.2" data-track-index="10" data-duration="1.5" data-volume="0.35"></audio>
+      <audio id="sfx-pop-1" class="clip" src="assets/sfx/pop.mp3" data-start="0.83" data-track-index="11" data-duration="0.72" data-volume="0.45"></audio>
+      <audio id="sfx-pop-2" class="clip" src="assets/sfx/pop.mp3" data-start="1.33" data-track-index="12" data-duration="0.72" data-volume="0.4"></audio>
+      <audio id="sfx-pop-3" class="clip" src="assets/sfx/pop.mp3" data-start="1.83" data-track-index="13" data-duration="0.72" data-volume="0.45"></audio>
+      <audio id="sfx-whoosh-1" class="clip" src="assets/sfx/whoosh.mp3" data-start="5.55" data-track-index="14" data-duration="0.57" data-volume="0.5"></audio>
+      <audio id="sfx-land" class="clip" src="assets/sfx/click-soft.mp3" data-start="6.75" data-track-index="15" data-duration="0.37" data-volume="0.5"></audio>
+      <audio id="sfx-whoosh-2" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-start="12.0" data-track-index="16" data-duration="5.54" data-volume="0.45"></audio>
+      <audio id="sfx-click-tab" class="clip" src="assets/sfx/click.mp3" data-start="15.43" data-track-index="17" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-click-filter" class="clip" src="assets/sfx/click.mp3" data-start="17.43" data-track-index="18" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-click-row" class="clip" src="assets/sfx/click.mp3" data-start="19.83" data-track-index="19" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-click-assign" class="clip" src="assets/sfx/click.mp3" data-start="22.63" data-track-index="20" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-click-company" class="clip" src="assets/sfx/click-soft.mp3" data-start="24.23" data-track-index="21" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-pop-ok" class="clip" src="assets/sfx/pop.mp3" data-start="24.43" data-track-index="22" data-duration="0.72" data-volume="0.5"></audio>
+      <audio id="sfx-click-remind" class="clip" src="assets/sfx/click.mp3" data-start="27.03" data-track-index="23" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-toast" class="clip" src="assets/sfx/notification.mp3" data-start="27.23" data-track-index="24" data-duration="2.46" data-volume="0.35"></audio>
+      <audio id="sfx-whoosh-3" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="31.1" data-track-index="25" data-duration="0.57" data-volume="0.5"></audio>
+      <audio id="sfx-click-prof" class="clip" src="assets/sfx/click.mp3" data-start="31.63" data-track-index="26" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-click-tauler" class="clip" src="assets/sfx/click.mp3" data-start="37.73" data-track-index="27" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-riser" class="clip" src="assets/sfx/riser.mp3" data-start="28.6" data-track-index="28" data-duration="10.03" data-volume="0.22"></audio>
+      <audio id="sfx-impact" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="38.63" data-track-index="29" data-duration="2.12" data-volume="0.6"></audio>
+      <audio id="sfx-whoosh-4" class="clip" src="assets/sfx/whoosh.mp3" data-start="43.25" data-track-index="30" data-duration="0.57" data-volume="0.5"></audio>
+      <audio id="sfx-chime" class="clip" src="assets/sfx/chime.mp3" data-start="46.63" data-track-index="31" data-duration="2.5" data-volume="0.35"></audio>
+      <audio id="sfx-click-teacher" class="clip" src="assets/sfx/click.mp3" data-start="33.83" data-track-index="32" data-duration="0.37" data-volume="0.6"></audio>
+      <audio id="sfx-pop-paid" class="clip" src="assets/sfx/pop.mp3" data-start="40.83" data-track-index="33" data-duration="0.72" data-volume="0.5"></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

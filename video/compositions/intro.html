@@ -1,0 +1,162 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #e9edf1;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: var(--ink);
+    }
+    #in-sheet {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      background: #fff;
+    }
+    .in-row {
+      display: flex;
+      height: 62px;
+      border-bottom: 1px solid #d5dbe1;
+    }
+    .in-row > div {
+      border-right: 1px solid #d5dbe1;
+      font-size: 24px;
+      padding: 0 18px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .in-row > div:nth-child(1) { width: 70px; justify-content: center; color: #8a95a1; background: #f1f3f5; font-size: 20px; }
+    .in-row > div:nth-child(2) { width: 330px; }
+    .in-row > div:nth-child(3) { width: 300px; }
+    .in-row > div:nth-child(4) { width: 260px; }
+    .in-row > div:nth-child(5) { width: 300px; }
+    .in-row > div:nth-child(6) { width: 260px; }
+    .in-row > div:nth-child(7) { width: 400px; color: #6b7785; }
+    .in-head > div { background: #f1f3f5; font-weight: 700; color: #4b5763; }
+    .in-cell.r { background: #fbd9d9; color: #a3121a; font-weight: 700; }
+    .in-cell.y { background: #fff0b3; color: #7a5a00; font-weight: 700; }
+    .in-note {
+      position: absolute;
+      width: 330px;
+      min-height: 230px;
+      background: #ffe27a;
+      box-shadow: 0 14px 28px rgba(18, 32, 47, 0.22);
+      padding: 28px 30px;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #3a3000;
+    }
+    #in-clock {
+      position: absolute;
+      left: 120px;
+      top: 96px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 44px;
+      font-weight: 900;
+      padding: 16px 28px;
+      border-radius: 10px;
+      letter-spacing: -0.01em;
+    }
+    .in-q {
+      position: absolute;
+      left: 120px;
+      top: 640px;
+      background: #fff;
+      padding: 30px 44px;
+      border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(18, 32, 47, 0.25);
+      font-size: 96px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.02;
+      white-space: nowrap;
+    }
+    .in-q em { font-style: normal; color: var(--brand); }
+    .in-q span { display: inline-block; }
+  </style>
+  <div id="root" data-composition-id="intro" data-width="1920" data-height="1080" data-layout-allow-overflow>
+    <div id="in-sheet" data-layout-ignore>
+      <div class="in-row in-head"><div></div><div>Alumne</div><div>Cicle</div><div>Curs</div><div>Pràctiques</div><div>Pagament</div><div>Observacions</div></div>
+      <div class="in-row"><div>2</div><div class="in-cell">Laia Puig</div><div class="in-cell">CFGM EiPC</div><div class="in-cell">2n</div><div class="in-cell">ok</div><div class="in-cell">ok</div><div class="in-cell">trucar empresa</div></div>
+      <div class="in-row"><div>3</div><div class="in-cell">Marc Vidal</div><div class="in-cell">CFGM EiPC</div><div class="in-cell">2n</div><div class="in-cell r">???</div><div class="in-cell y">2a quota?</div><div class="in-cell">mirar correu</div></div>
+      <div class="in-row"><div>4</div><div class="in-cell">Pol Serra</div><div class="in-cell">CFGM ES</div><div class="in-cell">1r</div><div class="in-cell">—</div><div class="in-cell y">pendent</div><div class="in-cell">ve dilluns</div></div>
+      <div class="in-row"><div>5</div><div class="in-cell">Júlia Font</div><div class="in-cell">CFGM EiPC</div><div class="in-cell">2n</div><div class="in-cell r">sense</div><div class="in-cell">ok</div><div class="in-cell">veure Excel 2</div></div>
+      <div class="in-row"><div>6</div><div class="in-cell">Arnau Roca</div><div class="in-cell">CFGS CEPC</div><div class="in-cell">1r</div><div class="in-cell">—</div><div class="in-cell r">impagat</div><div class="in-cell">???</div></div>
+      <div class="in-row"><div>7</div><div class="in-cell">Aina Soler</div><div class="in-cell">CFGM CAI</div><div class="in-cell">2n</div><div class="in-cell y">conveni?</div><div class="in-cell">ok</div><div class="in-cell">signatura</div></div>
+      <div class="in-row"><div>8</div><div class="in-cell">Biel Costa</div><div class="in-cell">CFGM EiPC</div><div class="in-cell">2n</div><div class="in-cell r">sense</div><div class="in-cell y">pendent</div><div class="in-cell">duplicat?</div></div>
+      <div class="in-row"><div>9</div><div class="in-cell">Martina Mas</div><div class="in-cell">CFGM ES</div><div class="in-cell">2n</div><div class="in-cell">ok</div><div class="in-cell">ok</div><div class="in-cell"></div></div>
+      <div class="in-row"><div>10</div><div class="in-cell">Nil Ferrer</div><div class="in-cell">CFGM CAI</div><div class="in-cell">1r</div><div class="in-cell">—</div><div class="in-cell r">???</div><div class="in-cell">canvi de grup</div></div>
+      <div class="in-row"><div>11</div><div class="in-cell">Ona Riera</div><div class="in-cell">CFGS CEPC</div><div class="in-cell">2n</div><div class="in-cell y">pendent</div><div class="in-cell">ok</div><div class="in-cell">tutor?</div></div>
+      <div class="in-row"><div>12</div><div class="in-cell">Jan Molina</div><div class="in-cell">CFGM EiPC</div><div class="in-cell">1r</div><div class="in-cell">—</div><div class="in-cell y">2a quota?</div><div class="in-cell"></div></div>
+      <div class="in-row"><div>13</div><div class="in-cell">Clàudia Prat</div><div class="in-cell">CFGM ES</div><div class="in-cell">2n</div><div class="in-cell r">sense</div><div class="in-cell">ok</div><div class="in-cell">mirar correu</div></div>
+      <div class="in-row"><div>14</div><div class="in-cell">Hugo Sala</div><div class="in-cell">CFGM EiPC</div><div class="in-cell">2n</div><div class="in-cell">ok</div><div class="in-cell r">impagat</div><div class="in-cell">???</div></div>
+      <div class="in-row"><div>15</div><div class="in-cell">Emma Vives</div><div class="in-cell">CFGM CAI</div><div class="in-cell">2n</div><div class="in-cell y">conveni?</div><div class="in-cell y">pendent</div><div class="in-cell">Excel antic</div></div>
+      <div class="in-row"><div>16</div><div class="in-cell">Àlex Bosch</div><div class="in-cell">CFGS CEPC</div><div class="in-cell">1r</div><div class="in-cell">—</div><div class="in-cell">ok</div><div class="in-cell"></div></div>
+      <div class="in-row"><div>17</div><div class="in-cell">Paula Gil</div><div class="in-cell">CFGM EiPC</div><div class="in-cell">2n</div><div class="in-cell r">???</div><div class="in-cell">ok</div><div class="in-cell">duplicat?</div></div>
+      <div class="in-row"><div>18</div><div class="in-cell">Roc Martí</div><div class="in-cell">CFGM ES</div><div class="in-cell">1r</div><div class="in-cell">—</div><div class="in-cell r">???</div><div class="in-cell">trucar</div></div>
+      <div class="in-row"><div>19</div><div class="in-cell">Carla Rius</div><div class="in-cell">CFGM CAI</div><div class="in-cell">2n</div><div class="in-cell r">sense</div><div class="in-cell">ok</div><div class="in-cell"></div></div>
+      <div class="in-row"><div>20</div><div class="in-cell">Lluc Pons</div><div class="in-cell">CFGM EiPC</div><div class="in-cell">2n</div><div class="in-cell y">pendent</div><div class="in-cell y">2a quota?</div><div class="in-cell">veure Excel 2</div></div>
+    </div>
+
+    <div id="in-note-1" class="in-note" style="left: 1380px; top: 150px">Pràctiques de Marc???</div>
+    <div id="in-note-2" class="in-note" style="left: 1500px; top: 470px">Rebuts 2a quota</div>
+    <div id="in-note-3" class="in-note" style="left: 1060px; top: 330px">Qui fa el mòdul 5?</div>
+
+    <div id="in-clock">Dilluns · 8:00</div>
+
+    <div id="in-q1" class="in-q"><span>Qui</span> <span>no</span> <span>té</span> <span><em>pràctiques?</em></span></div>
+    <div id="in-q2" class="in-q"><span>Qui</span> <span>té</span> <span>pagaments</span> <span><em>pendents?</em></span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      // The sheet keeps scrolling: the old way never stops
+      tl.fromTo("#in-sheet", { y: 0 }, { y: -170, duration: 5.6, ease: "none" }, 0);
+
+      // Problem cells light up one after another
+      const bad = gsap.utils.toArray("#in-sheet .in-cell.r, #in-sheet .in-cell.y");
+      tl.fromTo(bad, { opacity: 0.25 }, { opacity: 1, duration: 0.12, stagger: 0.07, ease: "power2.out" }, 0.1);
+
+      // Post-its slap onto the screen
+      const notes = [["#in-note-1", -4], ["#in-note-2", 3], ["#in-note-3", -2]];
+      notes.forEach(([sel, rot], i) => {
+        tl.fromTo(sel, { opacity: 0, scale: 1.35, rotation: rot * 3 },
+          { opacity: 1, scale: 1, rotation: rot, duration: 0.32, ease: "back.out(1.6)" }, 0.8 + i * 0.5);
+      });
+
+
+      // Questions: per-word blur in, held still, then blur out
+      function question(sel, at, out) {
+        tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at);
+        tl.fromTo(sel + " span", { opacity: 0, filter: "blur(6px)" },
+          { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" }, at);
+        tl.to(sel, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, out);
+      }
+      question("#in-q1", 2.0, 3.75);
+      question("#in-q2", 3.9, 5.4);
+
+      // Exit: every cell lifts off towards the database of the next scene
+      const cells = gsap.utils.toArray("#in-sheet .in-cell");
+      tl.to(cells, {
+        y: (i) => -260 - ((i * 37) % 180),
+        x: (i) => ((i * 53) % 240) - 120,
+        scale: 0.5,
+        opacity: 0,
+        duration: 0.5,
+        stagger: { each: 0.004, from: "center" },
+        ease: "power3.in",
+      }, 5.45);
+      tl.to(["#in-note-1", "#in-note-2", "#in-note-3", "#in-clock"], { y: -300, opacity: 0, duration: 0.4, ease: "power3.in", stagger: 0.04 }, 5.45);
+      tl.to("#in-sheet", { backgroundColor: "#f3f5f7", duration: 0.5, ease: "power2.inOut" }, 5.6);
+
+      window.__timelines["intro"] = tl;
+    })();
+  </script>
+</template>

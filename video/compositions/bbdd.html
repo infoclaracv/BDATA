@@ -1,0 +1,160 @@
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      background-color: #f3f5f7;
+      background-image: radial-gradient(#cfd6dd 1.6px, transparent 1.6px);
+      background-size: 32px 32px;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      color: var(--ink);
+    }
+    .db-title {
+      position: absolute;
+      left: 120px;
+      top: 92px;
+      font-size: 96px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+    }
+    .db-title em { font-style: normal; color: var(--brand); }
+    .db-title span { display: inline-block; }
+    .db-t {
+      position: absolute;
+      width: 340px;
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 32px rgba(18, 32, 47, 0.12);
+      overflow: hidden;
+    }
+    .db-t h3 {
+      background: var(--ink);
+      color: #fff;
+      font-size: 30px;
+      font-weight: 900;
+      padding: 16px 24px;
+      letter-spacing: -0.01em;
+    }
+    .db-t ul { list-style: none; padding: 12px 24px 18px; }
+    .db-t li {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 22px;
+      color: #3b4753;
+      padding: 7px 0;
+      border-bottom: 1px dashed #e3e7eb;
+      white-space: nowrap;
+    }
+    .db-t li:last-child { border-bottom: 0; }
+    .db-t li.k { color: var(--brand); font-weight: 700; }
+    .pk { font-family: "Inter", sans-serif; font-size: 16px; font-weight: 900; color: #fff; background: var(--brand); border-radius: 5px; padding: 2px 6px; margin-right: 6px; vertical-align: 3px; }
+    #db-alumnes { width: 400px; }
+    #db-alumnes h3 { background: var(--brand); font-size: 36px; }
+    #db-alumnes li { font-size: 24px; }
+    #db-lines { position: absolute; left: 0; top: 0; }
+    #db-lines path { fill: none; stroke: #8794a1; stroke-width: 4; stroke-linecap: round; }
+    .db-key {
+      position: absolute;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      background: #fff;
+      border: 2px solid #8794a1;
+      border-radius: 8px;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+  </style>
+  <div id="root" data-composition-id="bbdd" data-width="1920" data-height="1080" data-layout-allow-overflow>
+    <svg id="db-lines" width="1920" height="1080" viewBox="0 0 1920 1080" data-layout-ignore>
+      <path id="db-l1" d="M960 505 L340 455" />
+      <path id="db-l2" d="M960 505 L1570 425" />
+      <path id="db-l3" d="M960 505 L1550 815" />
+      <path id="db-l4" d="M960 505 L400 845" />
+      <path id="db-l5" d="M400 845 L340 455" />
+      <path id="db-l6" d="M400 845 L960 885" />
+    </svg>
+
+    <div id="db-cicles" class="db-t" style="left: 170px; top: 330px">
+      <h3>Cicles</h3>
+      <ul><li class="k"><b class="pk">PK</b> cicle_id</li><li>nom</li><li>grau (GM / GS)</li><li>modalitat</li></ul>
+    </div>
+    <div id="db-moduls" class="db-t" style="left: 230px; top: 720px">
+      <h3>Mòduls</h3>
+      <ul><li class="k"><b class="pk">PK</b> modul_id</li><li>cicle_id</li><li>professor_id</li></ul>
+    </div>
+    <div id="db-prof" class="db-t" style="left: 790px; top: 770px">
+      <h3>Professorat</h3>
+      <ul><li class="k"><b class="pk">PK</b> professor_id</li><li>nom</li><li>hores / setmana</li></ul>
+    </div>
+    <div id="db-prac" class="db-t" style="left: 1400px; top: 300px">
+      <h3>Pràctiques</h3>
+      <ul><li class="k"><b class="pk">PK</b> practica_id</li><li>id_alumne</li><li>empresa</li><li>estat</li></ul>
+    </div>
+    <div id="db-pag" class="db-t" style="left: 1380px; top: 690px">
+      <h3>Pagaments</h3>
+      <ul><li class="k"><b class="pk">PK</b> pagament_id</li><li>id_alumne</li><li>quota · import</li><li>estat</li></ul>
+    </div>
+    <div id="db-alumnes" class="db-t" style="left: 760px; top: 330px">
+      <h3>Alumnes</h3>
+      <ul><li class="k"><b class="pk">PK</b> id_alumne</li><li>nom i cognoms</li><li>cicle_id · curs</li><li>situació personal</li></ul>
+    </div>
+
+    <div id="db-k1" class="db-key" style="left: 560px; top: 455px">cicle_id</div>
+    <div id="db-k2" class="db-key" style="left: 1200px; top: 452px">id_alumne</div>
+    <div id="db-k3" class="db-key" style="left: 590px; top: 860px">professor_id</div>
+
+    <div id="db-t1" class="db-title"><span>Una</span> <span>sola</span> <span><em>base</em></span> <span><em>de</em></span> <span><em>dades.</em></span></div>
+    <div id="db-t2" class="db-title"><span>Tot</span> <span>el</span> <span>centre,</span> <span><em>connectat.</em></span></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      // Tables land: the loose cells of the spreadsheet settle into structure
+      const tables = ["#db-alumnes", "#db-cicles", "#db-prac", "#db-moduls", "#db-pag", "#db-prof"];
+      tables.forEach((sel, i) => {
+        tl.fromTo(sel, { opacity: 0, y: -120, scale: 0.7, filter: "blur(10px)" },
+          { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 0.1 + i * 0.12);
+        tl.fromTo(sel + " li", { opacity: 0, x: -14 },
+          { opacity: 1, x: 0, duration: 0.3, stagger: 0.05, ease: "power3.out" }, 0.35 + i * 0.12);
+      });
+
+      // Relations draw between the tables
+      const lines = gsap.utils.toArray("#db-lines path");
+      lines.forEach((p, i) => {
+        const len = p.getTotalLength();
+        tl.fromTo(p, { strokeDasharray: len, strokeDashoffset: len },
+          { strokeDashoffset: 0, duration: 0.5, ease: "power2.inOut" }, 1.4 + i * 0.12);
+      });
+      tl.fromTo(["#db-k1", "#db-k2", "#db-k3"], { opacity: 0, scale: 0.6 },
+        { opacity: 1, scale: 1, duration: 0.3, stagger: 0.15, ease: "back.out(1.6)" }, 2.0);
+
+      // Titles
+      function title(sel, at, out) {
+        tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at);
+        tl.fromTo(sel + " span", { opacity: 0, filter: "blur(6px)" },
+          { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.07, ease: "power2.out" }, at);
+        tl.to(sel, { opacity: 0, filter: "blur(8px)", duration: 0.18, ease: "power3.in" }, out);
+      }
+      title("#db-t1", 0.5, 3.1);
+      title("#db-t2", 3.25, 5.6);
+
+      // The Alumnes table becomes the world: it grows past the frame into the platform
+      const others = ["#db-cicles", "#db-prac", "#db-moduls", "#db-pag", "#db-prof", "#db-lines", "#db-k1", "#db-k2", "#db-k3"];
+      tl.to(others, { opacity: 0, filter: "blur(15px)", duration: 0.3, ease: "power2.in" }, 5.8);
+      // Grow around the middle of the card's white body so the body, not the header, fills the frame
+      const card = document.querySelector("#db-alumnes");
+      const body = card.querySelector("ul");
+      const oy = body.offsetTop + body.offsetHeight / 2;
+      gsap.set(card, { transformOrigin: "50% " + oy + "px" });
+      tl.to(card, { x: 960 - (card.offsetLeft + card.offsetWidth / 2), y: 540 - (card.offsetTop + oy), scale: 8, duration: 0.75, ease: "power3.inOut" }, 5.85);
+      tl.to("#db-alumnes ul", { opacity: 0, duration: 0.25, ease: "power2.in" }, 5.85);
+
+      window.__timelines["bbdd"] = tl;
+    })();
+  </script>
+</template>

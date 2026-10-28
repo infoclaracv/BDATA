@@ -1,0 +1,84 @@
+<html
+  data-composition-variables='[
+    {"id":"cta","type":"string","label":"Crida a l acció","default":"Demana una demo"},
+    {"id":"tagline","type":"string","label":"Subtítol","default":"Gestió acadèmica i administrativa dels cicles formatius"}
+  ]'
+>
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      font-family: "Inter", sans-serif;
+      background: transparent;
+    }
+    #tc-flood { position: absolute; inset: 0; background: var(--brand); }
+    .tc-line {
+      position: absolute;
+      left: 160px;
+      font-size: 110px;
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      color: #fff;
+      white-space: nowrap;
+    }
+    #tc-l1 { top: 330px; }
+    #tc-l2 { top: 470px; }
+    .tc-line span { display: inline-block; }
+    #tc-mark { position: absolute; left: 0; right: 0; top: 330px; text-align: center; color: #fff; }
+    #tc-word { font-size: 200px; font-weight: 900; letter-spacing: -0.05em; line-height: 1; }
+    #tc-word span { display: inline-block; }
+    #tc-word .n { color: var(--ink); }
+    #tc-tag { font-size: 38px; font-weight: 700; margin-top: 26px; }
+    #tc-cta {
+      display: inline-block;
+      margin-top: 54px;
+      background: #fff;
+      color: var(--brand);
+      font-size: 40px;
+      font-weight: 900;
+      padding: 24px 52px;
+      border-radius: 14px;
+      box-shadow: 0 16px 40px rgba(18, 32, 47, 0.25);
+    }
+  </style>
+  <div id="root" data-composition-id="tancament" data-width="1920" data-height="1080" data-layout-allow-overflow>
+    <div id="tc-flood"></div>
+    <div id="tc-l1" class="tc-line"><span>Cada</span> <span>alumne,</span> <span>localitzat.</span></div>
+    <div id="tc-l2" class="tc-line"><span>Tot</span> <span>el</span> <span>centre,</span> <span>en</span> <span>una</span> <span>web.</span></div>
+    <div id="tc-mark">
+      <div id="tc-word"><span>L</span><span>A</span><span>N</span><span>A</span><span>U</span><span class="n">1</span><span class="n">1</span><span class="n">2</span></div>
+      <div id="tc-tag" data-var-text="tagline">Gestió acadèmica i administrativa dels cicles formatius</div>
+      <div id="tc-cta" data-var-text="cta">Demana una demo</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+
+      // Colour flood from the dashboard ring
+      tl.fromTo("#tc-flood", { clipPath: "circle(0px at 1395px 490px)" },
+        { clipPath: "circle(2300px at 1395px 490px)", duration: 0.5, ease: "power2.inOut" }, 0);
+
+      function line(sel, at) {
+        tl.fromTo(sel, { opacity: 0 }, { opacity: 1, duration: 0.01 }, at);
+        tl.fromTo(sel + " span", { opacity: 0, filter: "blur(6px)" },
+          { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08, ease: "power2.out" }, at);
+      }
+      line("#tc-l1", 0.55);
+      line("#tc-l2", 1.45);
+      tl.to(["#tc-l1", "#tc-l2"], { opacity: 0, filter: "blur(8px)", duration: 0.2, stagger: 0.06, ease: "power3.in" }, 3.0);
+
+      // The mark is typed in letter by letter, then the tagline and the call to action
+      tl.fromTo("#tc-mark", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 3.2);
+      tl.fromTo("#tc-word span", { opacity: 0.0, y: 40, filter: "blur(6px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.35, stagger: 0.05, ease: "expo.out" }, 3.2);
+      tl.fromTo("#tc-tag", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 3.75);
+      tl.fromTo("#tc-cta", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(1.6)" }, 4.0);
+
+      window.__timelines["tancament"] = tl;
+    })();
+  </script>
+</template>
+</html>
