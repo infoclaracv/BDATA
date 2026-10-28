@@ -91,6 +91,10 @@
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
+      // Brand colours come from the root variables, so changing `brand` recolours every tween too
+      const BRAND = getComputedStyle(document.documentElement).getPropertyValue("--brand").trim() || "#d7141a";
+      const BRAND_SOFT = (() => { const h = BRAND.replace("#", ""); const n = parseInt(h.length === 3 ? h.replace(/./g, "$&$&") : h, 16);
+        const m = (c) => Math.round(c * 0.1 + 255 * 0.9); return `rgb(${m(n >> 16 & 255)}, ${m(n >> 8 & 255)}, ${m(n & 255)})`; })();
       const cam = document.querySelector("#pr-cam");
       function rel(sel) {
         let el = document.querySelector(sel);
@@ -109,8 +113,8 @@
       const nav = rel("#pr-nav-pr");
       tl.fromTo("#pr-cursor", { x: 1460, y: 820 }, { x: nav.cx - 60, y: nav.cy - 8, duration: 0.42, ease: "power3.inOut" }, 0);
       click(0.43);
-      tl.to("#pr-nav-al", { backgroundColor: "rgba(253,236,236,0)", color: "#5d6976", duration: 0.12 }, 0.46);
-      tl.to("#pr-nav-pr", { backgroundColor: "#fdecec", color: "#d7141a", duration: 0.12 }, 0.46);
+      tl.to("#pr-nav-al", { backgroundColor: "rgba(255,255,255,0)", color: "#5d6976", duration: 0.12 }, 0.46);
+      tl.to("#pr-nav-pr", { backgroundColor: BRAND_SOFT, color: BRAND, duration: 0.12 }, 0.46);
 
       // Content arrives on the same stage
       tl.fromTo("#pr-content", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.5);
@@ -127,7 +131,7 @@
       const marta = rel("#pr-t-marta");
       tl.to("#pr-cursor", { x: marta.cx - 120, y: marta.cy - 30, duration: 0.8, ease: "power3.inOut" }, 1.75);
       click(2.6);
-      tl.to("#pr-t-marta", { backgroundColor: "#fdecec", duration: 0.15 }, 2.63);
+      tl.to("#pr-t-marta", { backgroundColor: BRAND_SOFT, duration: 0.15 }, 2.63);
       tl.to(".pr-b:not(.t-marta)", { opacity: 0.25, duration: 0.25, ease: "power2.out" }, 2.65);
       tl.to(".pr-b.t-marta", { scale: 1.06, boxShadow: "0 10px 24px rgba(18,32,47,0.18)", duration: 0.3, ease: "back.out(1.6)", stagger: 0.04 }, 2.65);
 

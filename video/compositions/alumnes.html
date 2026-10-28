@@ -290,6 +290,10 @@
   <script>
     (function () {
       const tl = gsap.timeline({ paused: true });
+      // Brand colours come from the root variables, so changing `brand` recolours every tween too
+      const BRAND = getComputedStyle(document.documentElement).getPropertyValue("--brand").trim() || "#d7141a";
+      const BRAND_SOFT = (() => { const h = BRAND.replace("#", ""); const n = parseInt(h.length === 3 ? h.replace(/./g, "$&$&") : h, 16);
+        const m = (c) => Math.round(c * 0.1 + 255 * 0.9); return `rgb(${m(n >> 16 & 255)}, ${m(n >> 8 & 255)}, ${m(n & 255)})`; })();
       const cam = document.querySelector("#al-cam");
 
       // Position of an element inside the camera (layout space, before any transform)
@@ -325,7 +329,7 @@
       gsap.set(cam, { transformOrigin: "0 0", x: 0, y: 0, scale: 1 });
       gsap.set(["#al-c1", "#al-c2", "#al-c3", "#al-c4", "#al-c5", "#al-fitxa", "#al-toast", "#al-dd", "#al-pok", "#al-qok", "#al-pdet"], { opacity: 0 });
       gsap.set("#al-u1", { opacity: 1 });
-      gsap.set("#al-tab1", { color: "#d7141a" });
+      gsap.set("#al-tab1", { color: BRAND });
       gsap.set("#al-cursor", { x: 2000, y: 1150 });
 
       // 0 — the white of the table card opens into the platform
@@ -339,7 +343,7 @@
       tl.to("#al-u1", { opacity: 0, duration: 0.15 }, 2.03);
       tl.to("#al-tab1", { color: "#5d6976", duration: 0.15 }, 2.03);
       tl.fromTo("#al-u3", { opacity: 0, scaleX: 0.3 }, { opacity: 1, scaleX: 1, duration: 0.3, ease: "expo.out" }, 2.03);
-      tl.to("#al-tab3", { color: "#d7141a", duration: 0.15 }, 2.03);
+      tl.to("#al-tab3", { color: BRAND, duration: 0.15 }, 2.03);
       tl.fromTo(".al-row", { opacity: 0.15, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.04, ease: "power3.out", immediateRender: false }, 2.08);
       camTo(1060, 560, 1.12, 2.4);
 
